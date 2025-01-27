@@ -123,7 +123,6 @@ def scrape_and_reformat(download_path, save_dir,chrome_driver_path, user_data_di
     download(chrome_driver_path, user_data_dir, form_url)
 
     today = datetime.today().date()
-    is_workday = (datetime.today().weekday() != 5 and datetime.today().weekday() != 6)
 
     file_name = f'{today.year}-{today.month:02d}-{today.day:02d}'
 
@@ -134,6 +133,8 @@ def scrape_and_reformat(download_path, save_dir,chrome_driver_path, user_data_di
     excel_proccessing(download_path, results_dir, file_name)
 
 def run_schedule(schedules, save_dir,  download_path, chrome_driver_path, user_data_dir, form_url):
+    is_workday = (datetime.today().weekday() != 5 and datetime.today().weekday() != 6)
+
     current_hour = datetime.now().strftime('%H:%M')
 
     if current_hour in schedules:
